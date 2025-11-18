@@ -1,0 +1,17 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "A full-stack health chatbot application with user authentication and AI-powered health assistance using Google's Gemini API.",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"cd server && npm run server\" \"cd client && npm run dev\"",
+    "dev": "concurrently \"cd server && npm run server\" \"cd client && npm run dev\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

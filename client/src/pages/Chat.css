@@ -1,0 +1,413 @@
+/* ============================================================
+   ULTRA ADVANCED CHAT UI — React Ready
+   Glassmorphism + Neon Matrix + Cyberpunk Aurora + Minimal Luxe
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+    /* Default Glass Core */
+    --primary: #4f6d7a;
+    --secondary: #3a5a6a;
+    --accent: #00e0ff;
+    --bg: radial-gradient(circle at 10% 20%, #1a242f, #0b1419 90%);
+    --text: #f9f9f9;
+    --blur: 25px;
+    --shadow: rgba(0, 0, 0, 0.4);
+    --glass-bg: rgba(255, 255, 255, 0.08);
+}
+
+/* Neon Matrix Theme */
+[data-theme='neon'] {
+    --primary: #00ffff;
+    --secondary: #661aff;
+    --accent: #f0f;
+    --bg: radial-gradient(circle at 30% 30%, #000018, #001a1a 90%);
+    --glass-bg: rgba(0, 0, 0, 0.3);
+    --text: #dffaff;
+}
+
+/* Cyberpunk Aurora */
+[data-theme='aurora'] {
+    --primary: #ff00cc;
+    --secondary: #333399;
+    --accent: #00fff2;
+    --bg: linear-gradient(135deg, #1a0033, #000814, #091921);
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --text: #ffffff;
+}
+
+/* Minimal Luxe */
+[data-theme='minimal'] {
+    --primary: #007aff;
+    --secondary: #005bb5;
+    --accent: #00bcd4;
+    --bg: linear-gradient(135deg, #f8faff, #eaeff3);
+    --glass-bg: rgba(255, 255, 255, 0.9);
+    --text: #111;
+}
+
+/* ============================================================
+   GLOBAL
+   ============================================================ */
+body,
+html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: background 1s ease, color 0.4s ease;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* Smooth scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--primary), var(--secondary));
+    border-radius: 10px;
+}
+
+/* ============================================================
+   CONTAINER
+   ============================================================ */
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 80px);
+    width: 100%;
+    max-width: none;
+    margin: 2rem 0;
+    padding: 1.8rem;
+    border-radius: 25px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--blur)) saturate(180%);
+    box-shadow: 0 10px 40px var(--shadow), inset 0 0 25px rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.5s ease;
+    overflow: visible;
+    position: relative;
+    animation: fadeInContainer 1s ease-out;
+}
+
+@keyframes fadeInContainer {
+    from {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    padding: 1.2rem 1.5rem;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    margin-bottom: 1.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.chat-header::after {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.15), transparent 60%);
+    transform: rotate(30deg);
+    animation: shimmer 10s infinite linear;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-50%) rotate(30deg);
+    }
+
+    100% {
+        transform: translateX(50%) rotate(30deg);
+    }
+}
+
+.chat-header h2 {
+    font-size: 1.8rem;
+    margin: 0;
+    z-index: 2;
+}
+
+.theme-toggle {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 0.6rem 1rem;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+}
+
+/* ============================================================
+   CHAT MESSAGES
+   ============================================================ */
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    scroll-behavior: smooth;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 20px;
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: 0.4s;
+}
+
+.message {
+    max-width: 75%;
+    padding: 1rem 1.2rem;
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeInMessage 0.4s ease;
+}
+
+@keyframes fadeInMessage {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.user-message {
+    align-self: flex-end;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: #fff;
+    border-bottom-right-radius: 5px;
+    box-shadow: 0 0 15px var(--primary);
+}
+
+.bot-message {
+    align-self: flex-start;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text);
+    border-bottom-left-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.message:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+/* ============================================================
+   TYPING INDICATOR
+   ============================================================ */
+.typing-indicator {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 10px 15px;
+    align-self: flex-start;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.typing-indicator span {
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: inline-block;
+    animation: typingBounce 1.3s infinite;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+@keyframes typingBounce {
+
+    0%,
+    60%,
+    100% {
+        transform: translateY(0);
+    }
+
+    30% {
+        transform: translateY(-5px);
+    }
+}
+
+/* ============================================================
+   INPUT AREA
+   ============================================================ */
+.chat-input {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.07);
+    padding: 1rem 1.2rem;
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    margin-top: 1.2rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 1rem 1.2rem;
+    border-radius: 25px;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text);
+    font-size: 1.05rem;
+    outline: none;
+    transition: 0.3s ease;
+}
+
+.chat-input input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
+}
+
+.chat-input input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* ============================================================
+   SEND BUTTON
+   ============================================================ */
+.send-button {
+    padding: 1rem 1.5rem;
+    border-radius: 25px;
+    border: none;
+    font-weight: 600;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.send-button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+    transition: 0.5s;
+}
+
+.send-button:hover::after {
+    left: 100%;
+}
+
+.send-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px var(--accent);
+}
+
+/* ============================================================
+   PARTICLE BACKGROUND (OPTIONAL)
+   ============================================================ */
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0.4;
+    animation: floatParticle 12s infinite ease-in-out;
+}
+
+@keyframes floatParticle {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: translateY(-50vh) scale(0.7);
+        opacity: 0.3;
+    }
+
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 0.8;
+    }
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+    .chat-container {
+        height: calc(100vh - 100px);
+        padding: 1rem;
+    }
+
+    .chat-header h2 {
+        font-size: 1.4rem;
+    }
+
+    .message {
+        font-size: 0.95rem;
+    }
+
+    .send-button {
+        padding: 0.8rem 1.2rem;
+        font-size: 0.95rem;
+    }
+
+    .chat-input input {
+        font-size: 0.95rem;
+    }
+}
