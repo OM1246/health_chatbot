@@ -1,104 +1,104 @@
-# Health Chatbot Application
+# Health Chatbot 🏥💬
 
-A full-stack health chatbot application with user authentication and AI-powered health assistance using Google's Gemini API.
+<p align="center">
+  <img src="client/src/assets/react.svg" alt="Health Chatbot Logo" width="150" height="150">
+</p>
 
-## Features
+<p align="center">
+  <strong>Your personal AI-powered health assistant</strong>
+</p>
 
-- User authentication (Login/Signup)
-- Health chatbot powered by Google's Gemini AI
-- Responsive and modern UI
-- Secure JWT-based authentication
-- MongoDB for user data storage
+<p align="center">
+  <a href="#features">Features</a> •
+  <a href="#tech-stack">Tech Stack</a> •
+  <a href="#setup-instructions">Setup</a> •
+  <a href="#api-endpoints">API</a> •
+  <a href="#license">License</a>
+</p>
 
-## Tech Stack
+---
+
+A full-stack health chatbot application with user authentication and AI-powered health assistance using Google's Gemini API. This application provides a secure and responsive platform for users to get instant health-related advice and information.
+
+## 🌟 Features
+
+✨ **User Authentication**
+- Secure signup and login functionality
+- JWT-based session management
+- Password encryption with Bcrypt
+
+🤖 **AI-Powered Health Assistant**
+- 24/7 availability for health inquiries
+- Powered by Google's Gemini AI for accurate responses
+- Context-aware conversation history
+
+📱 **Modern & Responsive UI**
+- Clean, intuitive interface
+- Mobile-friendly design
+- Smooth animations and transitions
+
+🔒 **Security & Privacy**
+- Industry-standard security practices
+- Protected user data
+- Secure API communication
+
+## 🛠 Tech Stack
 
 ### Frontend
-- React.js with Vite
-- React Router for navigation
-- Axios for API requests
-- CSS3 for styling
+- [React.js](https://reactjs.org/) with [Vite](https://vitejs.dev/)
+- [React Router](https://reactrouter.com/) for navigation
+- [Axios](https://axios-http.com/) for API requests
+- [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS) for styling
 
 ### Backend
-- Node.js with Express
-- MongoDB with Mongoose
-- JWT for authentication
-- Bcrypt for password hashing
-- Google Generative AI (Gemini) for chatbot functionality
+- [Node.js](https://nodejs.org/) with [Express](https://expressjs.com/)
+- [MongoDB](https://www.mongodb.com/) with [Mongoose](https://mongoosejs.com/)
+- [JWT](https://jwt.io/) for authentication
+- [Bcrypt](https://www.npmjs.com/package/bcrypt) for password hashing
+- [Google Generative AI (Gemini)](https://ai.google.dev/) for chatbot functionality
 
-## Prerequisites
+## 🚀 Setup Instructions
 
-- Node.js (v14 or higher)
-- MongoDB (local or cloud instance)
-- Google Gemini API key
+### Prerequisites
+- [Node.js](https://nodejs.org/) (v14 or higher)
+- [MongoDB](https://www.mongodb.com/) (local or cloud instance)
+- [Google Gemini API key](https://ai.google.dev/)
 
-## Setup Instructions
+### Environment Variables
+Create a `.env` file in the `server` directory with the following variables:
+
+```env
+NODE_ENV=development
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret_key
+GEMINI_API_KEY=your_google_gemini_api_key
+```
 
 ### Option 1: Run frontend and backend separately
 
 #### Backend Setup
-
-1. Navigate to the server directory:
-   ```
-   cd server
-   ```
-
-2. Install dependencies:
-   ```
-   npm install
-   ```
-
-3. Create a `.env` file in the server directory with the following variables:
-   ```
-   NODE_ENV=development
-   PORT=5000
-   MONGO_URI=your_mongodb_connection_string
-   JWT_SECRET=your_jwt_secret_key
-   GEMINI_API_KEY=your_google_gemini_api_key
-   ```
-
-4. Start the backend server:
-   ```
-   npm run server
-   ```
+```bash
+cd server
+npm install
+npm run server
+```
 
 #### Frontend Setup
-
-1. Navigate to the client directory:
-   ```
-   cd client
-   ```
-
-2. Install dependencies:
-   ```
-   npm install
-   ```
-
-3. Start the frontend development server:
-   ```
-   npm run dev
-   ```
+```bash
+cd client
+npm install
+npm run dev
+```
 
 ### Option 2: Run both frontend and backend concurrently
 
-1. From the root directory, install dependencies:
-   ```
-   npm install
-   ```
+```bash
+npm install
+npm run dev
+```
 
-2. Update the `.env` file in the server directory with your configuration
-
-3. Run both servers concurrently:
-   ```
-   npm run dev
-   ```
-
-## Usage
-
-1. Register a new account or login with existing credentials
-2. Navigate to the chat page to interact with the health assistant
-3. Ask health-related questions and receive AI-powered responses
-
-## API Endpoints
+## 📡 API Endpoints
 
 ### Authentication
 - `POST /api/auth/register` - Register a new user
@@ -108,14 +108,22 @@ A full-stack health chatbot application with user authentication and AI-powered 
 ### Chat
 - `POST /api/chat/message` - Send a message to the chatbot
 
-## Contributing
+## 🤝 Contributing
+
+Contributions are welcome! Here's how you can contribute:
 
 1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-## License
+## 📄 License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+<p align="center">
+  Made with ❤️ for better health accessibility
+</p>
